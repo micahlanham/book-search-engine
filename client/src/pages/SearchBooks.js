@@ -69,12 +69,12 @@ const SearchBooks = () => {
 
     try {
       await saveBook({
-        variables: {book: bookToSave},
+        variables: { book: bookToSave },
         update: cache => {
-          const {me} = cache.readQuery({ query: GET_ME });
+          const { me } = cache.readQuery({ query: GET_ME });
           // console.log(me)
           // console.log(me.savedBooks)
-          cache.writeQuery({ query: GET_ME , data: {me: { ...me, savedBooks: [...me.savedBooks, bookToSave] } } })
+          cache.writeQuery({ query: GET_ME, data: { me: { ...me, savedBooks: [...me.savedBooks, bookToSave] } } });
         }
       });
 
@@ -99,8 +99,7 @@ const SearchBooks = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='Search for a book'
-                />
+                  placeholder='Search for a book' />
               </Col>
               <Col xs={12} md={4}>
                 <Button type='submit' variant='success' size='lg'>
@@ -147,6 +146,6 @@ const SearchBooks = () => {
       </Container>
     </>
   );
-};
+}
 
 export default SearchBooks;
